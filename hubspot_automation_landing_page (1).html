@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubSpot Automation System | Optimize Your B2B Pipeline</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hubspot: {
+                            DEFAULT: '#FF7A59',
+                            dark: '#e05b38',
+                            light: '#fff5f2',
+                            glow: 'rgba(255, 122, 89, 0.15)'
+                        },
+                        navy: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: radial-gradient(120% 120% at 50% 10%, #ffffff 40%, rgba(255, 122, 89, 0.08) 100%);
+        }
+        .glow-button {
+            box-shadow: 0 4px 20px -2px rgba(255, 122, 89, 0.4);
+            transition: all 0.2s ease-in-out;
+        }
+        .glow-button:hover {
+            box-shadow: 0 6px 24px -1px rgba(255, 122, 89, 0.55);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-white text-navy-900 antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-slate-100 sticky top-0 bg-white/85 backdrop-blur-md z-40 transition-all">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-lg bg-hubspot flex items-center justify-center text-white font-extrabold text-lg">H</div>
+                <span class="font-bold text-lg tracking-tight text-navy-900">Hub<span class="text-hubspot">Pipeline</span></span>
+            </div>
+            <div>
+                <button onclick="openModal('Audit Checklist')" class="bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-lg transition-all shadow-sm">
+                    Get Free Audit
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 pb-20 md:pt-24 md:pb-32 gradient-bg">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Side: Copywriting -->
+            <div class="lg:col-span-7 space-y-6 text-left">
+                <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold bg-hubspot-light text-hubspot border border-hubspot/25">
+                    Strategic Pipeline Engineering
+                </span>
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-navy-900 leading-[1.1]">
+                    Your HubSpot Is Storing Data. <br>
+                    <span class="text-hubspot">It’s Not Running Your Pipeline.</span>
+                </h1>
+                
+                <p class="text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+                    A practical, framework-driven automation system for B2B teams running on HubSpot. Improve lead speed-to-response, protect pipeline visibility, and automate follow-ups — without complicating your reps' workflow.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                    <button onclick="openModal('Hero Primary')" class="glow-button bg-hubspot hover:bg-hubspot-dark text-white font-semibold px-8 py-4 rounded-xl text-center text-base">
+                        Get the Revenue Leak Audit Breakdown
+                    </button>
+                    <a href="#problem-section" class="text-center text-sm font-semibold text-slate-500 hover:text-navy-900 transition-colors py-3 sm:py-0">
+                        Read the Core Problem First &darr;
+                    </a>
+                </div>
+
+                <div class="border-t border-dashed border-slate-200 pt-6">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Designed for B2B HubSpot accounts facing:</p>
+                    <div class="grid grid-cols-2 gap-y-2 gap-x-6">
+                        <div class="flex items-center space-x-2 text-sm text-slate-600">
+                            <span class="w-1.5 h-1.5 rounded-full bg-hubspot"></span>
+                            <span>Inconsistent lead follow-up</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-slate-600">
+                            <span class="w-1.5 h-1.5 rounded-full bg-hubspot"></span>
+                            <span>Stalled deals lacking alerts</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-slate-600">
+                            <span class="w-1.5 h-1.5 rounded-full bg-hubspot"></span>
+                            <span>Messy CRM data & blank fields</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-slate-600">
+                            <span class="w-1.5 h-1.5 rounded-full bg-hubspot"></span>
+                            <span>Weak conversion tracking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Interactive Pipeline Leakage Calculator -->
+            <div class="lg:col-span-5">
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl p-6 sm:p-8 relative">
+                    <div class="absolute top-0 right-6 -translate-y-1/2 bg-navy-950 text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full">
+                        Instant Assessment
+                    </div>
+                    
+                    <h3 class="text-lg font-bold text-navy-900 mb-1">HubSpot Leakage Calculator</h3>
+                    <p class="text-xs text-slate-500 mb-6">Analyze your pipeline health score in 4 quick checks.</p>
+
+                    <div id="calculator-steps" class="space-y-4">
+                        <!-- Question 1 -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">1. How do reps research new leads?</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="selectAnswer(1, 15)" id="q1-opt1" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Manually</span>
+                                    <span class="text-[10px] text-slate-400">Rep lookups LinkedIn/site</span>
+                                </button>
+                                <button onclick="selectAnswer(1, 0)" id="q1-opt2" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Automatically</span>
+                                    <span class="text-[10px] text-slate-400">Data tools/AI enrichment</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">2. What happens when deals stall?</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="selectAnswer(2, 20)" id="q2-opt1" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Nothing</span>
+                                    <span class="text-[10px] text-slate-400">Quietly cold-off in views</span>
+                                </button>
+                                <button onclick="selectAnswer(2, 0)" id="q2-opt2" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Auto-Alert/Task</span>
+                                    <span class="text-[10px] text-slate-400">Immediate rep reminder</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">3. What controls your follow-up rules?</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="selectAnswer(3, 25)" id="q3-opt1" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Rep Memory</span>
+                                    <span class="text-[10px] text-slate-400">Manual manual calendars</span>
+                                </button>
+                                <button onclick="selectAnswer(3, 0)" id="q3-opt2" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">CRM Workflows</span>
+                                    <span class="text-[10px] text-slate-400">Triggered task reminders</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">4. How accurate is your deal health visibility?</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="selectAnswer(4, 20)" id="q4-opt1" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">Low / Blank</span>
+                                    <span class="text-[10px] text-slate-400">Missing fields, messy logs</span>
+                                </button>
+                                <button onclick="selectAnswer(4, 0)" id="q4-opt2" class="calc-btn border border-slate-200 rounded-lg p-2.5 text-xs font-medium text-slate-700 hover:border-hubspot/50 hover:bg-hubspot-light/30 transition-all text-left">
+                                    <span class="block font-semibold">High / Validated</span>
+                                    <span class="text-[10px] text-slate-400">Strict requirements set</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div id="calculator-result" class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">Leakage Risk Score</span>
+                            <span id="score-text" class="text-xl font-extrabold text-slate-800">Calculating...</span>
+                        </div>
+                        <button onclick="requestReport()" class="bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors">
+                            Fix My Leakage
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 2 — The Core Problem -->
+    <span id="problem-section" class="block -translate-y-16"></span>
+    <section class="py-20 md:py-28 bg-navy-950 text-white relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-950 opacity-40 pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Left Column: Context -->
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-hubspot font-bold text-xs tracking-widest uppercase block">The Core Problem</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">
+                        Why pipeline performance still breaks inside HubSpot
+                    </h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Most B2B leadership teams treat pipeline issues strictly as sales capacity failures. They assume they need more SDRs, heavier outbound volume, or another tool.
+                    </p>
+                </div>
+                
+                <!-- Right Column: Body -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-navy-900/60 border-l-4 border-hubspot p-6 rounded-r-xl shadow-lg ring-1 ring-white/5">
+                        <p class="text-slate-200 font-medium text-base md:text-lg leading-relaxed">
+                            "In most instances, HubSpot isn't configured as a tool that actively moves work forward. It is configured simply as a storage cabinet for static records."
+                        </p>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider pt-2">This configuration gap creates critical structural issues:</p>
+                    <div class="grid sm:grid-cols-2 gap-4 text-sm text-slate-300">
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>Reps running manual LinkedIn lookups instead of calling</span>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>High-value contacts sitting unassigned with empty fields</span>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>Deals staying in "qualified" stages for months with zero alerts</span>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>Lead prioritization relying on rep subjective opinions</span>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>Follow-up schedules written down in random offline calendars</span>
+                        </div>
+                        <div class="flex items-start space-x-2.5">
+                            <span class="text-hubspot text-lg leading-none mt-0.5">•</span>
+                            <span>Zero notifications triggering when target accounts visit pricing</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-800">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            The root cause isn't necessarily poor rep activity. <span class="text-white font-semibold">It's a foundational operational leak</span> where your CRM acts like a database instead of a central operating engine.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 — What That Looks Like -->
+    <section class="py-20 md:py-28 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-slate-500 font-bold text-xs tracking-wider uppercase block mb-2">Real-World Friction</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy-900 tracking-tight">What this usually looks like in practice</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Block 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-hubspot font-bold mb-6 ring-1 ring-hubspot/20">01</div>
+                        <h3 class="text-lg font-bold text-navy-900 mb-3">Lead handling is manually choked</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Instead of immediate outreach, reps are still verifying site size, LinkedIn URLs, and qualification parameters manually. Response times drag into hours, and lead momentum decays.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-hubspot font-bold mb-6 ring-1 ring-hubspot/20">02</div>
+                        <h3 class="text-lg font-bold text-navy-900 mb-3">Deals slip out of focus silently</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Deals reach key intermediate stages, then sit in active pipelines with zero automated task escalations, owner warnings, or buyer re-engagement. If a rep forgets, the opportunity freezes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-hubspot font-bold mb-6 ring-1 ring-hubspot/20">03</div>
+                        <h3 class="text-lg font-bold text-navy-900 mb-3">Follow-ups scale on hope, not rules</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Tasks, reminders, escalation protocols, and customer checks rely entirely on individual sales reps checking calendar notifications. There is no automated systemic infrastructure supporting consistency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 — The System -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-2">The Framework</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy-900 tracking-tight mb-4">The 3-Step HubSpot Automation Model</h2>
+                <p class="text-slate-500 text-base leading-relaxed">This systematic blueprint isolates leak points, patches routing systems, and implements automated safeguards to keep pipeline velocities steady.</p>
+            </div>
+
+            <!-- Steps timeline / blocks -->
+            <div class="space-y-16 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:w-0.5 before:bg-slate-100 before:-z-10">
+                
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-stretch md:even:flex-row-reverse gap-8 relative">
+                    <!-- Point marker for timeline -->
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-hubspot-light border-4 border-white shadow flex items-center justify-center z-10">
+                        <div class="w-2 h-2 rounded-full bg-hubspot"></div>
+                    </div>
+                    
+                    <div class="w-full md:w-[45%] pl-10 md:pl-0 md:text-right md:even:text-left flex flex-col justify-center">
+                        <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-1">Phase 01</span>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Collect & Clean</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Before automation can route work, your standard and custom CRM data must be accurate. Automated rules break immediately when data formatting is inconsistent.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-[45%] pl-10 md:pl-10 bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-center">
+                        <ul class="text-xs text-slate-500 space-y-2 mb-4 text-left">
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Scanning and highlighting incomplete properties instantly</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Standardizing demographic, firmographic, and custom values</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Setting workflow rules to clean blank properties upon creation</span>
+                            </li>
+                        </ul>
+                        <div class="text-xs font-semibold text-emerald-600 bg-emerald-50 rounded px-3 py-2 self-start">
+                            Goal: Establish high CRM data fidelity.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-stretch gap-8 relative">
+                    <!-- Point marker for timeline -->
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-hubspot-light border-4 border-white shadow flex items-center justify-center z-10">
+                        <div class="w-2 h-2 rounded-full bg-hubspot"></div>
+                    </div>
+                    
+                    <div class="w-full md:w-[45%] pl-10 md:pl-0 flex flex-col justify-center">
+                        <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-1">Phase 02</span>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Score & Trigger</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Once your basic records are clean and standard, we implement logical scoring models that separate active buyers from quiet records automatically.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-[45%] pl-10 md:pl-10 bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-center">
+                        <ul class="text-xs text-slate-500 space-y-2 mb-4 text-left">
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Lead scoring based on fit and direct behavioral triggers</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Isolating buy-ready engagement signals from noise</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Prioritizing hot records dynamically inside CRM reps' views</span>
+                            </li>
+                        </ul>
+                        <div class="text-xs font-semibold text-emerald-600 bg-emerald-50 rounded px-3 py-2 self-start">
+                            Goal: Identify the highest-value opportunities instantly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-stretch gap-8 relative">
+                    <!-- Point marker for timeline -->
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-hubspot-light border-4 border-white shadow flex items-center justify-center z-10">
+                        <div class="w-2 h-2 rounded-full bg-hubspot"></div>
+                    </div>
+                    
+                    <div class="w-full md:w-[45%] pl-10 md:pl-0 md:text-right md:even:text-left flex flex-col justify-center">
+                        <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-1">Phase 03</span>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Act & Recover</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Finally, the CRM actively handles workflow logistics by managing task creation, tracking notifications, and alerting teams when pipeline slippage starts.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-[45%] pl-10 md:pl-10 bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-center">
+                        <ul class="text-xs text-slate-500 space-y-2 mb-4 text-left">
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Instantly routing ready leads based on ownership logic</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Triggering automatic follow-up reminders to assigned reps</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Generating escalation notifications when deals stay stalled too long</span>
+                            </li>
+                        </ul>
+                        <div class="text-xs font-semibold text-emerald-600 bg-emerald-50 rounded px-3 py-2 self-start">
+                            Goal: Reduce delay and recover sliding revenue.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 — Perfect Fit & Call-To-Action -->
+    <section class="py-20 md:py-28 bg-slate-50 border-t border-slate-200/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-3xl border border-slate-200/60 shadow-xl overflow-hidden grid md:grid-cols-12">
+                
+                <!-- Left Panel -->
+                <div class="p-8 md:p-12 md:col-span-7 flex flex-col justify-between">
+                    <div>
+                        <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-3">Is This For You?</span>
+                        <h3 class="text-2xl font-extrabold text-navy-900 mb-6">Common HubSpot issues this program is designed to fix:</h3>
+                        
+                        <p class="text-slate-500 text-sm mb-6">This setup fits directly if you're experiencing:</p>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start space-x-3 text-slate-700 text-sm">
+                                <svg class="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                <span>Inconsistent response times when new leads request product info.</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-slate-700 text-sm">
+                                <svg class="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                <span>Active deals stalling with little oversight or automatic pipeline updates.</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-slate-700 text-sm">
+                                <svg class="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                <span>Basic standard attributes (phone numbers, domains) left blank inside client contact records.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Panel (Action Card) -->
+                <div class="bg-navy-950 p-8 md:p-12 md:col-span-5 flex flex-col justify-center text-white relative">
+                    <div class="absolute inset-0 bg-hubspot/5 pointer-events-none"></div>
+                    <div class="relative z-10 text-center md:text-left space-y-4">
+                        <h4 class="text-xl font-bold">Uncover Your CRM Revenue Leaks</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Download the actionable audit blueprint and find out exactly why your revenue velocities stall within your active HubSpot setup.
+                        </p>
+                        <button onclick="openModal('Bottom Action Card')" class="glow-button w-full bg-hubspot hover:bg-hubspot-dark text-white text-sm font-semibold py-3.5 px-4 rounded-xl transition-colors">
+                            Get the Audit Breakdown
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-slate-800 text-slate-500 py-10 text-xs">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <span class="font-bold text-slate-300">HubPipeline</span> © 2026. All rights reserved.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lead Capture Modal (Popup) -->
+    <div id="leadModal" class="fixed inset-0 bg-navy-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl border border-slate-100 shadow-2xl w-full max-w-md mx-4 overflow-hidden relative transform scale-95 transition-transform duration-300" id="modalContainer">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Modal Content -->
+            <div class="p-8" id="modalFormContainer">
+                <span class="text-hubspot font-bold text-xs tracking-wider uppercase block mb-1">Instant Delivery</span>
+                <h3 class="text-xl font-extrabold text-navy-900 mb-2">Get the Audit Breakdown</h3>
+                <p class="text-xs text-slate-500 mb-6">Enter your professional email below to receive the complete HubSpot leakage audit guide.</p>
+                
+                <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <input type="hidden" id="origin-source" value="Generic">
+                    <div>
+                        <label for="name" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First Name</label>
+                        <input type="text" id="name" required class="w-full border border-slate-200 focus:border-hubspot focus:ring-1 focus:ring-hubspot focus:outline-none rounded-lg px-3 py-2.5 text-sm text-navy-900 placeholder-slate-400" placeholder="Jane">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Work Email</label>
+                        <input type="email" id="email" required class="w-full border border-slate-200 focus:border-hubspot focus:ring-1 focus:ring-hubspot focus:outline-none rounded-lg px-3 py-2.5 text-sm text-navy-900 placeholder-slate-400" placeholder="jane@company.com">
+                    </div>
+                    <button type="submit" class="w-full bg-hubspot hover:bg-hubspot-dark text-white font-semibold py-3.5 px-4 rounded-xl transition-colors shadow-lg shadow-hubspot/20 text-sm mt-2">
+                        Send My Audit Breakdown
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success State -->
+            <div class="p-8 hidden text-center" id="modalSuccessContainer">
+                <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-xl font-extrabold text-navy-900 mb-2">Check Your Inbox!</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    We've sent the complete <strong class="text-navy-900">Revenue Leak Audit Breakdown</strong> guide directly to your email address. It should arrive in the next 2 minutes.
+                </p>
+                <button onclick="closeModal()" class="mt-6 border border-slate-200 hover:border-navy-900 text-navy-900 text-xs font-semibold py-2.5 px-6 rounded-xl transition-all">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity and Calculator -->
+    <script>
+        const modal = document.getElementById('leadModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const formContainer = document.getElementById('modalFormContainer');
+        const successContainer = document.getElementById('modalSuccessContainer');
+        const originInput = document.getElementById('origin-source');
+
+        // Calculator State
+        let answers = { 1: 15, 2: 20, 3: 25, 4: 20 };
+
+        function updateScore() {
+            const score = Object.values(answers).reduce((a, b) => a + b, 0);
+            const scoreText = document.getElementById('score-text');
+            if (score <= 15) {
+                scoreText.innerHTML = `${score}% <span class="text-xs text-emerald-500 font-semibold block sm:inline sm:ml-2">Low Risk (Healthy CRM)</span>`;
+            } else if (score <= 50) {
+                scoreText.innerHTML = `${score}% <span class="text-xs text-yellow-500 font-semibold block sm:inline sm:ml-2">Moderate Leakage</span>`;
+            } else {
+                scoreText.innerHTML = `${score}% <span class="text-xs text-red-500 font-semibold block sm:inline sm:ml-2">Critical Risk</span>`;
+            }
+        }
+
+        function selectAnswer(questionNum, val) {
+            // Update answer state
+            answers[questionNum] = val;
+            
+            // Highlight selected button styles
+            const opt1 = document.getElementById(`q${questionNum}-opt1`);
+            const opt2 = document.getElementById(`q${questionNum}-opt2`);
+            
+            if (val > 0) {
+                opt1.classList.add('border-hubspot', 'bg-hubspot-light/40');
+                opt1.classList.remove('border-slate-200');
+                opt2.classList.remove('border-hubspot', 'bg-hubspot-light/40');
+                opt2.classList.add('border-slate-200');
+            } else {
+                opt2.classList.add('border-hubspot', 'bg-hubspot-light/40');
+                opt2.classList.remove('border-slate-200');
+                opt1.classList.remove('border-hubspot', 'bg-hubspot-light/40');
+                opt1.classList.add('border-slate-200');
+            }
+            updateScore();
+        }
+
+        function requestReport() {
+            const score = Object.values(answers).reduce((a, b) => a + b, 0);
+            openModal(`Leakage Calculator (Risk: ${score}%)`);
+        }
+
+        function openModal(source = 'Generic') {
+            originInput.value = source;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-95');
+                modalContainer.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+                successContainer.classList.add('hidden');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+            }, 300);
+        }
+
+        // Close modal on backdrop click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            formContainer.classList.add('hidden');
+            successContainer.classList.remove('hidden');
+        }
+
+        // Initialize defaults on load
+        window.onload = function() {
+            // Pre-select options to reflect initial answers
+            selectAnswer(1, 15);
+            selectAnswer(2, 20);
+            selectAnswer(3, 25);
+            selectAnswer(4, 20);
+        };
+    </script>
+</body>
+</html>
